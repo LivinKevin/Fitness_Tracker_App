@@ -1,0 +1,129 @@
+============================================================
+Fitness Tracker App - Query Outputs
+============================================================
+---------------------------------------------------------------
+QUERY 1: Get all exercises with category
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+exercise_id	    exercise_name	    category_id	    category_name	muscle_group	equipment_needed
+8	            Cycling	            2	            Cardio	        Legs / Cardio	Stationary Bike
+7	            Jump Rope	        2	            Cardio	        Full Body	    Jump Rope
+6	            Treadmill Run	    2	            Cardio	        Legs / Cardio	Treadmill
+9	            Hamstring Stretch	3	            Flexibility	    Legs	        None
+10	            Yoga Flow	        3	            Flexibility	    Full Body	    Yoga Mat
+----------------------------------------------------------------------------------------------------
+(First 5 of 12 rows)
+
+
+---------------------------------------------------------------
+QUERY 2: Get exercises filtered by category (category_id = 1, Strength)
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+exercise_id	exercise_name	    category_id	    category_name	muscle_group	equipment_needed
+1	        Barbell Bench Press	1	            Strength	    Chest	        Barbell, Bench
+2	        Deadlift	        1	            Strength	    Back / Legs	    Barbell
+5	        Dumbbell Curl	    1	            Strength	    Biceps	        Dumbbells
+4	        Overhead Press	    1	            Strength	    Shoulders	    Barbell
+3	        Squat	            1	            Strength	    Legs	        Barbell, Squat Rack
+----------------------------------------------------------------------------------------------------
+(First 5 of 5 rows)
+
+
+---------------------------------------------------------------
+QUERY 3: Search exercises by muscle group (LIKE '%Legs%')
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+exercise_id	exercise_name	    category_id	    category_name	muscle_group	equipment_needed
+8	        Cycling	            2	            Cardio	        Legs / Cardio	Stationary Bike
+2	        Deadlift	        1	            Strength	    Back / Legs	    Barbell
+9	        Hamstring Stretch	3	            Flexibility	    Legs	        None
+3	        Squat	            1	            Strength	    Legs	        Barbell, Squat Rack
+6	        Treadmill Run	    2	            Cardio	        Legs / Cardio	Treadmill
+----------------------------------------------------------------------------------------------------
+(First 5 of 5 rows)
+
+
+---------------------------------------------------------------
+QUERY 4: Get all workouts with user name
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+workout_id	workout_date	duration_minutes	workout_type	user_id	user_name
+5	        2025-03-04	    0	                Strength	    4	    Paola Oropeza
+4	        2025-03-03	    50	                HIIT	        3	    Kevin Garcia
+2	        2025-03-02	    45	                Cardio	        1	    Jorge Carmenate
+1	        2025-03-01	    60	                Strength	    1	    Jorge Carmenate
+3	        2025-03-01	    30	                Flexibility	    2	    Kevin Herrera
+----------------------------------------------------------------------------------------------------
+(First 5 of 5 rows)
+
+
+---------------------------------------------------------------
+QUERY 5: Get all sessions with workout and exercise info
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+session_id	workout_id	exercise_id	session_date	start_time	end_time	notes				              workout_type	exercise_name		muscle_group
+10		    4		    NULL	    2025-03-03	    07:10:00	07:20:00	Cooldown - no specific exercise	  HIIT	        NULL			    NULL
+9		    4		    12		    2025-03-03	    06:50:00	07:10:00	NULL				              HIIT		    Mountain Climbers	Core / Cardio
+8		    4		    11		    2025-03-03	    06:30:00	06:50:00	Burpee sets			              HIIT		    Burpees			    Full Body
+5		    2		    7		    2025-03-02	    07:30:00	07:45:00	Jump rope intervals		          Cardio		Jump Rope		    Full Body
+4		    2		    6		    2025-03-02	    07:00:00	07:30:00	30 min treadmill run		      Cardio		Treadmill Run		Legs / Cardio
+----------------------------------------------------------------------------------------------------
+(First 5 of 10 rows)
+
+
+---------------------------------------------------------------
+QUERY 6: Count exercises per category
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+category_name	exercise_count
+Strength	    5
+Cardio		    3
+Flexibility	    2
+HIIT		    2
+----------------------------------------------------------------------------------------------------
+(First 4 of 4 rows)
+
+
+---------------------------------------------------------------
+QUERY 7: Get user 1's total workout minutes
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+name			    total_minutes	workout_count
+Jorge Carmenate		105		        2
+----------------------------------------------------------------------------------------------------
+(First 1 of 1 row)
+
+---------------------------------------------------------------
+QUERY 8: Get single user with their workouts (user_id = 1)
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+user_id	name		email		    age	weight	workout_id	workout_date	duration_minutes	workout_type
+1	Jorge Carmenate	jcarm@fiu.edu	22	175	    2		    2025-03-02	    45			        Cardio
+1	Jorge Carmenate	jcarm@fiu.edu	22	175	    1		    2025-03-01	    60			        Strength
+----------------------------------------------------------------------------------------------------
+(First 2 of 2 rows)
+
+
+---------------------------------------------------------------
+QUERY 9: Get exercises that require no equipment
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+exercise_name		muscle_group
+Hamstring Stretch	Legs
+Burpees			    Full Body
+Mountain Climbers	Core / Cardio
+----------------------------------------------------------------------------------------------------
+(First 3 of 3 rows)
+
+
+---------------------------------------------------------------
+QUERY 10: Find users who have not logged any workouts
+---------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+user_id	name	email
+----------------------------------------------------------------------------------------------------
+(0 rows)
+
+
+
+
